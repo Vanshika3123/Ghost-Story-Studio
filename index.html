@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100e18">
+  <meta name="description" content="Spin a small ghost story with an open model that runs right in your browser.">
+  <title>The Quiet Signal — Ghost Story Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="The Quiet Signal home">
+        <span class="brand-mark" aria-hidden="true">◉</span>
+        <span>THE QUIET SIGNAL</span>
+      </a>
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span id="modeLabel">LOCAL STORY MODE</span>
+      </div>
+    </header>
+
+    <section class="intro" id="top">
+      <p class="eyebrow"><span class="eyebrow-line"></span> A SMALL EXPERIMENT IN OPEN AI</p>
+      <h1>Some stories<br>wait <em>in the dark.</em></h1>
+      <p class="intro-copy">Leave a few details for the machine. It will make a little room for a ghost.</p>
+    </section>
+
+    <section class="workspace" aria-label="Ghost story generator">
+      <form class="controls" id="storyForm">
+        <div class="section-heading">
+          <span class="step-number">01</span>
+          <h2>Set the scene</h2>
+        </div>
+
+        <label class="field-label" for="place">Where should the story begin?</label>
+        <input id="place" name="place" maxlength="60" value="an old railway station" placeholder="A lighthouse, a quiet garden…">
+
+        <label class="field-label" for="keepsake">A small thing left behind</label>
+        <input id="keepsake" name="keepsake" maxlength="60" value="a music box" placeholder="A letter, a red scarf…">
+
+        <label class="field-label" for="mood">Choose a feeling</label>
+        <div class="select-wrap">
+          <select id="mood" name="mood">
+            <option value="quiet and tender">Quiet &amp; tender</option>
+            <option value="eerie and suspenseful">Eerie &amp; suspenseful</option>
+            <option value="wistful and mysterious">Wistful &amp; mysterious</option>
+            <option value="strange but hopeful">Strange but hopeful</option>
+          </select>
+          <span aria-hidden="true">⌄</span>
+        </div>
+
+        <div class="model-card">
+          <div class="model-icon" aria-hidden="true">✳</div>
+          <div class="model-copy">
+            <strong>Invite the open model</strong>
+            <span id="modelStatus">Optional · downloads once, then stays in your browser cache</span>
+          </div>
+          <label class="switch" aria-label="Use open model">
+            <input id="useModel" type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <p class="model-note" id="modelNote">The optional model needs internet for its first download (around 300–500 MB) and a modern browser. No API key or account.</p>
+
+        <button class="generate-button" id="generateButton" type="submit">
+          <span id="buttonText">Make a story</span>
+          <span class="button-arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <p class="privacy-note"><span aria-hidden="true">⌑</span> Your prompts stay in this tab. Nothing is sent to an AI server.</p>
+      </form>
+
+      <article class="story-panel" aria-live="polite" aria-busy="false">
+        <div class="story-topline">
+          <span class="story-kicker">FIELD NOTE <span id="storyNumber">001</span></span>
+          <button class="icon-button" id="copyButton" type="button" title="Copy story" aria-label="Copy story">▢</button>
+        </div>
+
+        <div class="story-content" id="storyContent">
+          <div class="story-placeholder">
+            <span class="moon-mark" aria-hidden="true">☾</span>
+            <p>Your story is still somewhere<br>between here and there.</p>
+            <span class="placeholder-caption">ADD A PLACE AND A KEEPSAKE TO BEGIN</span>
+          </div>
+        </div>
+
+        <div class="story-footer">
+          <span id="storyMeta">A story will appear here</span>
+          <span class="paper-mark" aria-hidden="true">✳</span>
+        </div>
+      </article>
+    </section>
+
+    <footer class="page-footer">
+      <span>BUILT WITH OPEN WEIGHTS · MADE FOR THE <a href="https://dev.to/challenges/hf26" target="_blank" rel="noreferrer">GHOST IN THE MACHINE</a> CHALLENGE</span>
+      <span class="footer-right">LESS SCREEN. MORE STORY.</span>
+    </footer>
+  </main>
+</body>
+</html>
